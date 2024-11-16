@@ -129,18 +129,6 @@
             </modules>
         </profile>
         <profile>
-            <!--
-            This profile file is used to configure and deploy applications to the Azure Spring Apps enterprise plan, only the following three applications are involved.
-            It's used for quickstart doc: https://learn.microsoft.com/azure/spring-apps/quickstart-deploy-microservice-apps
-            -->
-            <id>spring-apps-enterprise</id>
-            <modules>
-                <module>spring-petclinic-customers-service</module>
-                <module>spring-petclinic-vets-service</module>
-                <module>spring-petclinic-visits-service</module>
-            </modules>
-        </profile>
-        <profile>
             <id>springboot</id>
             <activation>
                 <file>
@@ -149,12 +137,9 @@
                 </file>
             </activation>
             <modules>
-                <module>spring-petclinic-admin-server</module>
                 <module>spring-petclinic-customers-service</module>
                 <module>spring-petclinic-vets-service</module>
                 <module>spring-petclinic-visits-service</module>
-                <module>spring-petclinic-config-server</module>
-                <module>spring-petclinic-discovery-server</module>
                 <module>spring-petclinic-api-gateway</module>
             </modules>
             <build>
