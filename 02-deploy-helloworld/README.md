@@ -9,15 +9,20 @@ In this module, we will accomplish four objectives:
 3. Learn how to scale the Azure Container Apps
 4. Learn how to configure readiness probe and create a new revision
 
-## Create `helloworld` app
+## Create `helloworld` app 
 
 A typical way to create Spring Boot applications is to use the Spring Initializer
 at  [https://start.spring.io/](https://start.spring.io/).
 
-> 💡 __Note:__ All subsequent commands in this workshop should be run from the same directory, except where otherwise
-> indicated via `cd` commands.
+![Spring Initializr](images/spring-initializr.jpg)
 
-![Test endpoint](images/spring-initializr.jpg)
+> If you are using Codespaces, follow the steps below to create a new Spring Boot project.
+
+```bash
+mkdir helloworld
+cd helloworld
+curl https://start.spring.io/starter.tgz -d dependencies=web,actuator,azure-support -d bootVersion=3.2.11 -d name=helloworld -d type=maven-project | tar -xzvf -
+```
 
 > We force the Spring Boot version to be 3.2.11, and keep default settings that use the `com.example.demo` package.
 

@@ -48,8 +48,8 @@ az login
 Next, install or update the extensions as it's required for the labs.
 
 ```bash
-az extension add --name containerapp --upgrade
-az extension add --name serviceconnector-passwordless --upgrade
+az extension add --name containerapp --upgrade --allow-preview true
+az extension add --name serviceconnector-passwordless --upgrade --allow-preview true
 ```
 
 An Azure resource provider is to enable functionality for a specific Azure service. Some resource providers are
