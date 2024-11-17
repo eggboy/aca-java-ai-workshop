@@ -1,15 +1,25 @@
-# Use Azure Service Connector
+# :rocket: Use Azure Service Connector
 
 Azure Service Connector helps you connect your application to other backing services. Service Connector configures the
 network settings and connection information (for example, generating environment variables) between application services
 and target backing services in management plane. Developers use their preferred SDK or library that consumes the
 connection information to do data plane operations against the target backing service.
 
-In this section, you will learn how to use Azure Service Connector to connect your Java application to Azure Database
-for MySQL Flexible Server without exposing the connection string in the code. But Before we start, let's understand the
-basics of the authentication mechanism with Azure SDK
+In this lab, you will learn how to use Azure Service Connector to connect your Java application
+to Azure Database for MySQL Flexible Server without exposing the connection string in the code. But Before we start, let's first familiarize with the fundamentals of the authentication mechanism within Azure SDK.
 
-## Basics - Application Authentication for Azure resources
+## Objective
+
+In this module, we'll focus on four key objectives:
+
+1. :white_check_mark: Understand the basics of application authentication for Azure resources with Azure SDK.
+2. :bar_chart: Understand the Managed Identity and its benefits over Service Principal.
+3. :mag: Configure the backend services to use managed identity to connect to MySQL database.
+4. :airplane: Understand the concept of passwordless connection with Service Connector.
+
+---
+
+## :book: Basics - Application Authentication for Azure resources
 
 When an app needs to access an Azure resource, the app must be authenticated to Azure. This is true for all apps,
 whether deployed to Azure, deployed on-premises, or under development on a local developer workstation.
@@ -22,22 +32,14 @@ There are 3 approaches to authenticate an application to Azure:
 2. Service Principal - Identity obtained from Azure Entra ID
 3. Managed Identity - Identity obtained from Azure Managed Identity
 
-Deciding between service principal and managed identity depends on the scenario, but basic recommendation is to user
-managed identity for every possible scenario and fall back to service principal only when managed identity is not
-supported. Good example of it is, Apps hosted outside of Azure (for example on-premises apps) that need to connect to
+Choosing between a service principal and managed identity depends on the specific scenario. However, the typical preference is to start with managed identity in all possible scenarios before falling back onto the service principal when managed identity isn't supported. Good example of it is, Apps hosted outside of Azure (for example on-premises apps) that need to connect to
 Azure services.
 
-## Basics - Why Azure Managed Identity?
+## :book: Basics - Why Azure Managed Identity?
 
-Service Principal has been a common way to authenticate an application to Azure resources, but it has major caveat that
-it is just the combination of id and secret. A common challenge for developers is the management of this service
-principal. You might challenge this and say we could use Azure Key Vault. It's true that developers can securely store
-the secrets in Azure Key Vault, But services still need a way to access Azure Key Vault which using service principal is
-a security risk.
+Service Principal traditionally has been a common way to authenticate an application to Azure resources, but it has major caveat: it's just a combination of an ID and secret. While storing secrets securely in the Azure Key Vault is possible, accessing the Azure Key Vault through a service principal poses a security risk.
 
-Managed identities provide an automatically managed identity in Microsoft Entra ID for applications to use when
-connecting to resources that support Microsoft Entra authentication. Applications can use managed identities to obtain
-Microsoft Entra tokens without having to manage any credentials.
+Managed Identifies alleviate this problem by providing an automatically-managed identity within Microsoft Entra ID. This capability allows applications to use managed identities to obtain Microsoft Entra tokens without having to manually manage any credentials.
 
 There are two types of managed identities:
 
@@ -55,18 +57,18 @@ There are two types of managed identities:
     - User-assigned identities can be used by multiple resources.
     - You authorize the managed identity to have access to one or more services.
 
-## Basics - Spring Cloud Azure(Azure SDK for Spring Boot)
+## :book: Basics - Spring Cloud Azure(Azure SDK for Spring Boot)
 
 Spring Cloud Azure is an open-source project that provides seamless Spring integration with Azure. When it comes to
-authentication, Spring Cloud Azure uses `DefaultAzureCredential` which is intended to provide the simplifed
-authentication for development and production environments. It is a chain of credentials that is tried in order
+authentication, Spring Cloud Azure uses `DefaultAzureCredential` which is intended to provide the simplified
+authentication mechanism for development and production environments. It is a chain of credentials that is tried in order
 automatically, and the first available credential is used to authenticate. This approach enables your app to use
 different authentication methods in different environments (local dev vs. production) without implementing
 environment-specific code.
 
 ![DefaultAzureCredential](images/DefaultAzureCredential.png)
 
-To configure managed identity with Spring Cloud Azure, below properties should be set in your `application.properties`
+To configure managed identity with Spring Cloud Azure, the following properties must be set in your `application.properties`
 file:
 
 ```properties
@@ -74,7 +76,7 @@ spring.cloud.azure.credential.managed-identity-enabled=true
 spring.cloud.azure.credential.client-id=<Client ID of Managed Identity>
 ```
 
-## Passwordless Connection with Service Connector
+## :book: Basics - Passwordless Connection with Service Connector
 
 Passwordless connections use managed identities to access Azure services. With this approach, you don't have to manually
 track and manage secrets for managed identities. These tasks are securely handled internally by Azure.
@@ -85,7 +87,7 @@ Database for MySQL, and Azure SQL Database, to accept managed identities.
 
 ### Create Service Connector
 
-Previously deployed backend services are using in-memory database. In this section, we will create Service Connector to
+Previously deployed backend services are using in-memory database. In this chapter, we will create Service Connector to
 connect the backend services to Azure Database for MySQL Flexible Server as the database.
 
 Let's create a Managed Identity for the MySQL database using Azure CLI.
@@ -116,28 +118,34 @@ az containerapp connection create mysql-flexible \
 -c vets-service-build42982
 ```
 
-Once you run the command, Service Connector will configure MySQL with passwordless connection, open the firewall rule,
-and inject a few environment variables for the service type `springBoot` which is specified in the CLI command above. Go
-back to Azure Portal and check the newly created Service Connector.
+After running the command, the Service Connector will configure MySQL with a password-free connection, opens the firewall rule, and injects several environment variables for the `springBoot` service type specified in the CLI command above. Service Connector injects different environment variable depending on the given service type and the target service. Look at the [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-service-bus?tabs=dotnet) as an example. 
 
-Do note that it injects the environment variable `spring.datasource.azure.passwordless-enabled=true` so that Spring
-Cloud Azure can use the managed identity to connect to the MySQL database.
+Return to the Azure Portal to check your newly created Service Connector.
 
+Do note the injected the environment variable `spring.datasource.azure.passwordless-enabled=true`. It enables Spring
+Cloud Azure to use the managed identity to connect to the MySQL database.
 
 ![DefaultAzureCredential](images/serviceconnector-3.png)
 
-Last thing to do is to specify the SPRING_ACTIVE_PROFILE to `passwordless` in the vets-service.
+Finally, specify the SPRING_ACTIVE_PROFILE to `passwordless` in the vets-service:
 
 ```bash
 az containerapp update --name vets-service --set-env-vars SPRING_PROFILES_ACTIVE=passwordless
 ```
 
-> 💡 [!NOTE] 
-> `passwordless` profile will automatically create tables on MySQL. Use client tools like MySQL Workbench to see the tables.
+> 💡 [!NOTE]
+> `passwordless` profile will automatically create tables on MySQL. Use client tools like MySQL Workbench to see the
+> tables.
 
 > [!IMPORTANT]
 > **Repeat the same steps for customers-service and visits-service**
 
+
+
+## :notebook_with_decorative_cover: Summary
+
 ---
 
-➡️ Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+➡️
+:arrow_forward::️ Up
+Next : [07 - Monitoring Java Applications on Azure Container Apps](../07-monitoring-java-aca/README.md)

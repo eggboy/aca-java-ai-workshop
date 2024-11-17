@@ -1,5 +1,11 @@
+# Create AI-infused Java Apps with Azure OpenAI and Spring AI
+
+
+
 
 
 ---
 
-➡️ Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+
+## :notebook_with_decorative_cover: Summary
+

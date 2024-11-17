@@ -1,6 +1,17 @@
 # Monitoring Java Applications on Azure Container Apps
 
-## Enable Java Metrics
+Monitoring is a critical part of running applications in production. Azure Container Apps provides several monitoring options to help you monitor your Java applications.
+
+---
+
+## Objective
+
+In this module, we'll focus on three key objectives:
+1. :white_check_mark: Enable Java Metrics for the backend services.
+2. :bar_chart: Access the Spring Boot Admin dashboard.
+3. :airplane: Monitor the logs using Log Analytics.
+
+## Enabling Java Metrics
 
 Java Virtual Machine (JVM) metrics are critical for monitoring the health and performance of your Java applications. The
 data collected includes insights into memory usage, garbage collection, thread count of your JVM.
@@ -57,7 +68,7 @@ Go to your container app in the Azure portal. Select Log stream under the Monito
 
 ![Spring Boot Admin](images/logstream.png)
 
-## Log Monitoring with Log Analytics
+## Monitoring Logs with Log Analytics
 
 Azure Container Apps is integrated with Azure Monitor Log Analytics to monitor and analyze your container app's logs.
 When selected as your log monitoring solution, your Container Apps environment includes a Log Analytics workspace that
@@ -91,8 +102,11 @@ ContainerAppSystemLogs_CL
 | take 100
 ```
 
+## :notebook_with_decorative_cover: Summary
+
+In this chapter, we enabled Java metrics for the backend services, accessed the Spring Boot Admin dashboard, and monitored the logs using Log Analytics. 
 
 ---
 
-➡️
-Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+:arrow_forward::️ Up
+Next  : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)

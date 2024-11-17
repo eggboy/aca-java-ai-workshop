@@ -1,34 +1,34 @@
 {
-    "image": "eggboy/devcontainer:jdk17-3.2.11",
-    "customizations": {
-        "settings": {
-            "java.home": "/docker-java-home",
-            "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-            "java.format.settings.profile": "GoogleStyle",
-            "java.completion.importOrder": [
-                "com",
-                "java",
-                "javax",
-                "org"
-            ]
-        },
-        "vscode": {
-            "extensions": [
-				"GitHub.copilot-chat",
-				"GitHub.copilot",
-				"redhat.java",
-				"vscjava.vscode-java-pack",
-				"vmware.vscode-spring-boot",
-				"redhat.vscode-xml",
-				"vmware.vscode-boot-dev-pack",
-				"vscjava.vscode-java-debug",
-                "ms-azuretools.vscode-azure-github-copilot"
-			]
-        },
-        runArgs: [
-            "--cap-add=SYS_PTRACE",
-            "--security-opt",
-            "seccomp=unconfined"
-        ]
-    }
+  "image": "eggboy/devcontainer:jdk17-3.2.11",
+  "customizations": {
+    "settings": {
+      "java.home": "/docker-java-home",
+      "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+      "java.format.settings.profile": "GoogleStyle",
+      "java.completion.importOrder": [
+        "com",
+        "java",
+        "javax",
+        "org"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "redhat.java",
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "redhat.vscode-xml",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-java-debug",
+        "ms-azuretools.vscode-azure-github-copilot"
+      ]
+    },
+    runArgs: [
+      "--cap-add=SYS_PTRACE",
+      "--security-opt",
+      "seccomp=unconfined"
+    ]
+  }
 }

@@ -1,25 +1,28 @@
-# 01 - Set Up Your Environment for the Workshop
+# :rocket: 01 - Set Up Your Environment for the Workshop
+
+To ensure a smooth workshop experience, we need to set up your environment correctly. This includes creating an Azure
+subscription using the provided Azure pass and preparing your code environment with the necessary tools.
 
 ## Redeem Your Azure Pass
 
-You can redeem the Azure Pass to create a subscription in Azure, which will allow you to create resources in Azure. The
-provided promo code will give you a $100 USD credit to use  in Azure.
+Your Azure Pass provides a $100 USD credit for you to use with Azure, enabling you to create various resources as part
+of this workshop. Follow these steps to redeem your pass:  
 
-1. Open a private browser window to ensure you do not accidentally use your existing Microsoft Account or work account.
-   Navigate to [Microsoft Azure Pass](https://www.microsoftazurepass.com/) and click on the "Start" button.
+
+1. Open a new private browser window. This ensures you don't accidentally link the Azure pass to an existing Microsoft Account or work account. Navigate to the [Microsoft Azure Pass](https://www.microsoftazurepass.com/) website and click the "Start" button.
 
    ![Azure Pass](images/image01.png "Azure Pass")
 
-2. Create a New Account.
+2. Create a new Azure Account.
 
    ![Azure Pass](images/image02.png "Azure Pass")
    ![Azure Pass](images/image03.png "Azure Pass")
 
-3. Enter the Promo Code.
+3. Enter the provided Promo Code.
 
    ![Azure Pass](images/image04.png "Azure Pass")
 
-After filling out the details, it will set up a new Azure subscription for you.
+Upon successful redemption, you'll have a newly setup Azure subscription.
 
 ## Prepare Your Code Environment for the Workshop
 
@@ -38,25 +41,25 @@ To prepare your code environment for the workshop, you need to install the follo
 
 ## Log In with Azure CLI
 
-To sign in to Azure from the CLI, run the following command and follow the prompts to complete the authentication
-process.
+Signing In with Azure CLI Login to Azure from the CLI with the following command, and complete the prompts to
+authenticate:
 
 ```bash
 az login
 ```
 
-Next, install or update the extensions as it's required for the labs.
+Next, install or update the necessary Azure CLI extensions for our labs
 
 ```bash
 az extension add --name containerapp --upgrade --allow-preview true
 az extension add --name serviceconnector-passwordless --upgrade --allow-preview true
 ```
 
-An Azure resource provider is to enable functionality for a specific Azure service. Some resource providers are
+Azure resource providers is to enable functionality for a specific Azure service. Some resource providers are
 registered by default. For a list of resource providers registered by default, see Resource providers
 for [Azure services](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-services-resource-providers).
 
-Register the required Azure providers.
+Let's register the required Azure resource providers for our labs:
 
 ```bash
 az config set extension.use_dynamic_install=yes_without_prompt
@@ -67,6 +70,8 @@ az provider register --namespace Microsoft.ServiceLinker
 
 ## Configure default settings for Azure Container Apps
 
+Default Settings for Azure Container Apps To ensure easy access to Azure Container Apps, set your default settings:
+
 ```bash
 az configure --defaults location=${LOCATION} group=${RESOURCE_GROUP}
 ```
@@ -74,4 +79,4 @@ az configure --defaults location=${LOCATION} group=${RESOURCE_GROUP}
 ---
 
 ➡️
-Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+Up Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)

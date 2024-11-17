@@ -1,14 +1,12 @@
-# Autoscaling with KEDA(Kubernetes-based Event Driven Autoscaler)
+# :rocket: Autoscaling with KEDA(Kubernetes-based Event Driven Autoscaler)
 
 ## Objective
 
-In this module, we will accomplish three objectives:
+In this module, we'll focus on three key objectives:
 
-1. Learn about KEDA(Kubernetes Event-Driven Autoscaler)
-2. Create a different scaling rule
-3. Test scaling of Azure Container Apps
-
-https://azure.github.io/aca-dotnet-workshop/aca/09-aca-autoscale-keda/
+1. :white_check_mark: Learn about KEDA (Kubernetes Event-Driven Autoscaler)
+2. :bar_chart: Create a different scaling rule
+3. :mag: Test scaling of Azure Container Apps
 
 ## Auto-scaling Options on Azure Container Apps
 
@@ -25,18 +23,18 @@ of [scaling triggers](https://learn.microsoft.com/en-us/azure/container-apps/sca
 - Redis
 - and many more
 
-Custom scaling trigger is using KEDA under the hood, and we will discuss KEDA in the following chapter. 
+Custom scaling trigger uses KEDA under the hood which we'll discuss more in following chapters.
 
-**Adding or editing scaling rules creates a new revision of your container app.**
+> :warning: **Please note, adding or altering scaling rules creates a new revision of your container app.**
 
 ## HTTP Scaling Rule
 
-With an HTTP scaling rule, you have control over the threshold of concurrent HTTP requests that determines how your
+With HTTP scaling rule, you have control over the threshold of concurrent HTTP requests that determines how your
 container app revision scales. Every 15 seconds, the number of concurrent requests is calculated as the number of
-requests in the past 15 seconds divided by 15. Let's set the concurrency level as 1, so we can easily simulate the
+requests in the past 15 seconds divided by 15. For the workshop, Let's set the concurrency level as 1, so we can easily simulate the
 scaling with our own browser.
 
-Update the scaling rule using Azure CLI. This can be also done on Azure Portal.
+The scaling rule can be updated using Azure CLI or via the Azure portal. Here's how to do it with CLI:
 
 ```bash
 az containerapp update \
@@ -59,7 +57,7 @@ az containerapp logs show \
 
 ![System Logs showing the replica no changes](images/http-1.png)
 
-Go to [Azure Portal](https://portal.azure.com) and check the `Revisions and replicas`. in `Replicas`, you should be able
+Navigate to [Azure Portal](https://portal.azure.com) and check the `Revisions and replicas`. in `Replicas`, you should be able
 to see multiple replicas.
 
 ![System Logs showing the replica no changes](images/http-2.png)
@@ -83,14 +81,14 @@ frameworks.
 
 ## Azure Service Bus Scaling Rule
 
-We're going to test Custom scaling rule with Azure Service Bus. First thing to do is to find the connection string and queue name of the Azure Service Bus. Azure Service Bus and queue were created in the previous module. Queue name is `keda` and connection string can be found in the Azure Portal.
+Next, we will be testing our custom scaling rule using the Azure Service Bus. Firstly, we need to find the connection string and queue name of the Azure Service Bus which we created in the earlier module. Queue name is `keda` and connection string can be found in the Azure Portal.
 
 ![Service Bus Managed Key](images/servicebus-1.png)
 
-Now, choose the scenario you want to follow. You can either use GitHub Copilot to create the Azure Service Bus publisher or manually publish messages into the Azure Service Bus Queue. If you choose the first scenario, feel free to go through the second scenario as well. If you choose the second scenario, still go through the first scenario to see how GitHub Copilot can help you in your development process.
+**Now it's decision-making time! Choose the scenario you want to follow. Scenario 1 is to use GitHub Copilot to create the Azure Service Bus publisher. If you choose this scenario, you might like to go through the second scenario as well. If you choose Scenario 2, check the scenario first. If you want to see how GitHub Copilot can help in the development process, go through the first scenario as well.**
 
 <details markdown="block">
-**<summary>Scenario 1 - Use GitHub Copilot to create Azure Service Bus publisher</summary>**
+<summary>:rocket: Scenario 1 - Use GitHub Copilot to create Azure Service Bus publisher</summary>
 
 First step is to add Azure Service Bus dependency to your `pom.xml` file. Open the `pom.xml` file and add the following:
 
@@ -107,9 +105,9 @@ We will generate the code using GitHub Copilot Chat with small prompt engineerin
 
 ![Copilot Chat with Prompt](images/ghcp-1.png)
 
-There are two things to note: 
+Two important details to note here: 
 1. Two tabs are opened, `pom.xml` and `HelloController.java`.
-2. Actual prompt in the GitHub Copilot Chat is as below. 
+2. The actual prompt in the GitHub Copilot Chat is as below, 
 ```plaintext
 1. Create an RESTful endpoint "/message" and read the Path Variable following the endpoint. Endpoint should be GET method.
 2. Send received message to Azure Service Bus Queue using client.
@@ -159,26 +157,26 @@ public class HelloController {
 }
 ```
 
-GitHub Copilot also suggests to add the following properties to `application.properties` file. Use the values that we make a note in the previous step.
+GitHub Copilot must have suggested to add the following properties to `application.properties` file. Use the values that we make a note in the previous step.
 
 ```properties
 azure.servicebus.connection-string=YOUR_SERVICE_BUS_CONNECTION_STRING
 azure.servicebus.queue-name=YOUR_QUEUE_NAME
 ```
 
-Now, run the application and test the new REST endpoint as below. If invoked correctly, you should see the message similar to below.
+Now, run the application and test the new REST endpoint as below. If invoked correctly, you should see a message similar to below.
 
 ![New REST endpoint](images/servicebus-2.png)
 
-Check the actual message enqueued in the Azure Service Bus Queue. You can see the enqueued message in the Azure Portal. Go to the Azure Portal, find the Service Bus Queue, and click on the `Service Bus Explorer`. It provides a `Peek Mode` to see the messages in the queue. Click on the `Peek from start` to see all the messages in the queue.
+Verify the messages enqueued in the Azure Service Bus Queue. You can view the enqueued messages in the Azure Portal. Go to the Azure Portal, find the Service Bus Queue, and click on the `Service Bus Explorer`. It provides a `Peek Mode` to view the messages in the queue. Click on the `Peek from start` to see all the messages in the queue.
 
 ![Peek Mode](images/servicebus-3.png)
 </details>
 
 <details markdown="block">
-**<summary>Scenario 2 - Manually Publish Messages into Azure Service Bus Queue</summary>**
+<summary>:rocket: Scenario 2 - Manually Publish Messages into Azure Service Bus Queue</summary>
 
-On Azure Portal, go to the Service Bus Queue and click on the `Service Bus Explorer`. There is `Send Messages` button on the top to send messages to the queue. `Repeat Send` button can be used to send multiple messages at once.
+On Azure Portal, navigate to the Service Bus Queue and click on the `Service Bus Explorer`. There is `Send Messages` button on the top to send messages to the queue. `Repeat Send` button can be used to send multiple messages at once.
 
 ![Sens Messages](images/servicebus-4.png)
 
@@ -186,7 +184,7 @@ On Azure Portal, go to the Service Bus Queue and click on the `Service Bus Explo
 
 We're ready to publish messages into the Azure Service Bus Queue. KEDA needs a connection string to connect to the Azure Service Bus. Ideally, we should use managed identity minimize the security risk. However, for the simplicity, we will use the connection string. We will discuss about managed identity in detail in the following modules.
 
-Create a secret in the Azure Container Apps to store the connection string. Put the correct connection string in the following command. 
+Create a secret in the Azure Container Apps to securely store the connection string. Insert the correct connection string in the following command. 
 
 ```bash
 az containerapp secret set \
@@ -194,13 +192,13 @@ az containerapp secret set \
         --secrets service-bus-connection-string="Endpoint=..."
 ````
 
-We're going to restart the container app to apply the new secret. Find the active revision first. 
+We're going to restart the container app to apply new secret to Azure Container Apps. First, find the active revision. 
 
 ```bash
 az containerapp revision list -n helloworld -o table
 ````
 
-Then restart the active revision. For example,
+Then restart the active revision. For example:
 
 ```bash
 az containerapp revision restart -n helloworld --revision helloworld--50kr6mp
@@ -221,7 +219,7 @@ az containerapp update \
   --scale-rule-auth "connection=service-bus-connection-string"
 ```
 
-Scaling rule is created. Now, try to publish messages into the Azure Service Bus Queue. You should see the scaling of the container app. Also, delete the messages in the queue to see the decrease of the replicas.
+The scaling rule has been created. Now, try publishing messages into the Azure Service Bus Queue. You should see the scaling of the container app. Also, delete the messages in the queue to see the decreases of the replicas.
 
 ```bash
 az containerapp revision list -n helloworld -o table
@@ -231,18 +229,18 @@ CreatedTime                Active    Replicas    TrafficWeight    HealthState   
 ```
 
 
-> 💡 __Note:__ If scaling is not working as expected, you can check the logs to see the reason. Go to Azure Portal and check the logs in `Logs` section.
+> 💡 __Note:__ If scaling does not perform as expected, check the logs to find out the reason. navigate to Azure Portal and check the logs in `Logs` section.
 > ```kusto
 > ContainerAppSystemLogs_CL
 > | where Reason_s == "KEDAScalerFailed"
 >| project TimeGenerated, ContainerAppName_s, ReplicaName_s, Log_s, Reason_s
 >```
 
+## :notebook_with_decorative_cover: Summary
 
-
-
+In this module, we learned about KEDA and how to create a scaling rule using Azure CLI. We tested the scalability of our setup with Azure Service Bus. Up next, we will create a managed Java component on Azure Container Apps.
 
 ---
 
-➡️
-Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+:arrow_forward:
+Up Next : [04 - Create Managed Java Component on Azure Container Apps](../04-create-managed-java-component/README.md)
