@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: chats-service
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+  ai:
+    azure:
+      openai:
+        api-key:
+        endpoint:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+    import: configserver:http://config-server:8888

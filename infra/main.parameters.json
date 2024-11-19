@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": {
+      "value": "${AZURE_ENV_NAME}"
+    },
+    "resourceGroupName": {
+      "value": "${AZURE_RESOURCE_GROUP}"
+    },
+    "location": {
+      "value": "${AZURE_LOCATION}"
+    },
+    "azureOpenAiDeploymentName": {
+      "value": "${AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o}"
+    },
+    "auzreOpenAiResourceGroupName": {
+      "value": "${AZURE_OPENAI_RESOURCE_GROUP}"
+    },
+    "azureOpenAiSkuName": {
+      "value": "S0"
+    },
+    "azureOpenAiDeploymentSkuName": {
+      "value": "Standard"
+    },
+    "azureOpenAiDeploymentCapacity": {
+      "value": "30"
+    },
+    "azureOpenAiDeploymentVersion": {
+      "value": "${AZURE_OPENAI_DEPLOYMENT_VERSION=2024-08-06}"
+    },
+    "logAnalyticsName": {
+      "value": "${AZURE_LOG_ANALYTICS}"
+    },
+    "publicNetworkAccess": {
+      "value": "${AZURE_PUBLIC_NETWORK_ACCESS=Enabled}"
+    },
+    "bypass": {
+      "value": "${AZURE_NETWORK_BYPASS=AzureServices}"
+    }
+  }
+}

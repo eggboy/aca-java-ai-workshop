@@ -53,9 +53,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- Unecessary for Azure Spring Cloud with App Insight IPA 3.0 enabled
-        -->
-
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <version>3.3.5</version>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
         <!-- Azure JDBC Starter -->
         <dependency>
             <groupId>com.azure.spring</groupId>

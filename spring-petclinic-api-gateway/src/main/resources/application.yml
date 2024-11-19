@@ -24,6 +24,20 @@ spring:
             - Path=/api/customer/**
           filters:
             - StripPrefix=2
+        - id: chat-service
+          uri: lb://chats-service
+          predicates:
+            - Path=/api/chats/**
+          filters:
+            - StripPrefix=2
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ---
 spring:
   config:

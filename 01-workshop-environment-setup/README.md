@@ -68,13 +68,29 @@ az provider register --namespace Microsoft.OperationalInsights
 az provider register --namespace Microsoft.ServiceLinker
 ```
 
-## Configure default settings for Azure Container Apps
+## Prepare Your Azure Environment
 
-Default Settings for Azure Container Apps To ensure easy access to Azure Container Apps, set your default settings:
+This workshop provides Bicep templates to deploy the necessary resources to Azure. To deploy these resources, you need to run the command below from HOME directory:
 
 ```bash
-az configure --defaults location=${LOCATION} group=${RESOURCE_GROUP}
+azd up
 ```
+
+This will create resources in your Azure subscription, including:
+1. Resource Group
+2. Log Analytics workspace
+3. Azure OpenAI Endpoint
+4. Azure Container Apps Environment
+5. Azure Database for MySQL Flexible Server
+
+`azd up` will return the name of resources created in your Azure subscription. Please go to [Azure Portal](https://portal.azure.com) to verify the resources in the resource gorup `aca-labs`
+
+## Configure default settings for Azure Container Apps
+
+> [!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
+> ```bash
+> az configure --defaults location=koreacentral group=aca-labs
+> ```
 
 ---
 
