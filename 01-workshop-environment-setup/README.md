@@ -70,7 +70,14 @@ az provider register --namespace Microsoft.ServiceLinker
 
 ## Prepare Your Azure Environment
 
-This workshop provides Bicep templates to deploy the necessary resources to Azure. To deploy these resources, you need to run the command below from $HOME directory:
+This workshop provides Bicep templates to deploy the necessary resources to Azure. In case you're using your own laptop, please git clone the project first. If you're using GitHub Codespaces, the project is already cloned for you so you don't need to do anything. 
+
+```bash
+git clone https://github.com/eggboy/aca-java-ai-workshop
+cd aca-java-ai-workshop
+```
+
+Run the following command to deploy the necessary resources to Azure:
 
 ```bash
 azd up
