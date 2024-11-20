@@ -70,7 +70,7 @@ az provider register --namespace Microsoft.ServiceLinker
 
 ## Prepare Your Azure Environment
 
-This workshop provides Bicep templates to deploy the necessary resources to Azure. To deploy these resources, you need to run the command below from HOME directory:
+This workshop provides Bicep templates to deploy the necessary resources to Azure. To deploy these resources, you need to run the command below from $HOME directory:
 
 ```bash
 azd up
