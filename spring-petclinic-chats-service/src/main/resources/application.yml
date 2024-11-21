@@ -8,6 +8,9 @@ spring:
       openai:
         api-key:
         endpoint:
+        chat:
+          options:
+            model: gpt-4o
 
 ---
 spring:

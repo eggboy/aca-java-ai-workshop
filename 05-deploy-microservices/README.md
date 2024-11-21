@@ -53,7 +53,7 @@ Bind the Eureka Server, Config Server and Spring Boot Admin to the customers-ser
 ```bash
 az containerapp update \
     --name customers-service \
-    --bind eurekaserver configserver springadmin
+    --bind eurekaserver configserver admin
 ```
 
 ### Deploying `visits-service`

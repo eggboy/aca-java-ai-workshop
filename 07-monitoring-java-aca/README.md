@@ -109,4 +109,5 @@ In this chapter, we enabled Java metrics for the backend services, accessed the 
 ---
 
 :arrow_forward::️ Up
-Next  : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+Next  : [08 - Create AI-infused Java Apps with Azure OpenAI and Spring AI](../08-AI-with-java/README.md)
+
