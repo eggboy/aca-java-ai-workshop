@@ -77,10 +77,36 @@ git clone https://github.com/eggboy/aca-java-ai-workshop
 cd aca-java-ai-workshop
 ```
 
-Run the following command to deploy the necessary resources to Azure:
+Run the following command to deploy the necessary resources to Azure. This is an example of outputs:
 
 ```bash
 azd up
+? Select an Azure location to use:  1. (Asia Pacific) East Asia (eastasia)
+
+Packaging services (azd package)
+
+
+Provisioning Azure resources (azd provision)
+Provisioning Azure resources can take some time.
+
+Subscription: ... (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+Location: East Asia
+
+  You can view detailed progress in the Azure Portal:
+  https://portal.azure.com/#view/...
+
+  (✓) Done: Resource group: aca-labs (7.168s)
+  (✓) Done: Log Analytics workspace: log-vyhjztie4zgue (4.19s)
+  (✓) Done: Service Bus Namespace: sb-vyhjztie4zgue (22.363s)
+  (✓) Done: Azure OpenAI: cog-vyhjztie4zgue (29.06s)
+  (✓) Done: Azure AI Services Model Deployment: cog-vyhjztie4zgue/gpt-4o (30.675s)
+  (✓) Done: Container Apps Environment: cae-vyhjztie4zgue (1m46.019s)
+  (✓) Done: Azure Database for MySQL flexible server: mysql-vyhjztie4zgue (7m14.054s)
+
+Deploying services (azd deploy)
+
+
+SUCCESS: Your up workflow to provision and deploy to Azure completed in 8 minutes 3 seconds.
 ```
 
 This will create resources in your Azure subscription, including:

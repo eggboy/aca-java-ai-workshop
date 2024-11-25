@@ -43,7 +43,7 @@ To use this shortcut:
 1. Set the following environment variables to define the Config Server name and the Git repository URL to be used as the configuration source.
    ```bash
    CONFIG_SERVER_NAME="configserver"
-   GIT_URL="https://github.com/azure-samples/spring-petclinic-microservices-config"
+   GIT_URL="https://github.com/eggboy/spring-petclinic-microservices-config"
    ```
 2. Create the Managed Config Server for Spring and set its configuration source as the public Git repository.
    ```bash

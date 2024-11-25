@@ -140,19 +140,19 @@ module managedEnvironment 'br/public:avm/res/app/managed-environment:0.8.1' = {
   }
 }
 
-// module flexibleServer 'br/public:avm/res/db-for-my-sql/flexible-server:0.4.1' = {
-//   name: 'flexibleServerDeployment'
-//   scope: resourceGroup
-//   params: {
-//     name: '${abbrs.dBforMySQLServers}${resourceToken}'
-//     skuName: 'Standard_D2ds_v4'
-//     tier: 'GeneralPurpose'
-//     administratorLogin: 'acaadmin'
-//     administratorLoginPassword:  '${abbrs.dBforMySQLServers}${resourceToken}'
-//     location: location
-//     storageAutoGrow: 'Enabled'
-//   }
-// }
+module flexibleServer 'br/public:avm/res/db-for-my-sql/flexible-server:0.4.1' = {
+  name: 'flexibleServerDeployment'
+  scope: resourceGroup
+  params: {
+    name: '${abbrs.dBforMySQLServers}${resourceToken}'
+    skuName: 'Standard_D2ds_v4'
+    tier: 'GeneralPurpose'
+    administratorLogin: 'acaadmin'
+    administratorLoginPassword:  '${abbrs.dBforMySQLServers}${resourceToken}'
+    location: location
+    storageAutoGrow: 'Enabled'
+  }
+}
 
 module namespace 'br/public:avm/res/service-bus/namespace:0.10.1' = {
   name: 'namespaceDeployment'
