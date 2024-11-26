@@ -16,4 +16,4 @@ This workshop demonstrates how to deploy and manage Java applications on Azure C
 5. [Deploy PetClinic Microservices ](05-deploy-microservices/README.md)
 6. [Use Azure Service Connector](06-use-service-connector/README.md)
 7. [Monitoring Java Applications on Azure Container Apps](07-monitoring-java-aca/README.md)
-8. [Create AI-infused Java Apps with Azure OpenAI and Spring AI](08-create-ai-infused-java-apps/README.md)
+8. [Create AI-infused Java Apps with Azure OpenAI and Spring AI](08-AI-with-java/README.md)

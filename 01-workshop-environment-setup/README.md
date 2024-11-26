@@ -6,10 +6,11 @@ subscription using the provided Azure pass and preparing your code environment w
 ## Redeem Your Azure Pass
 
 Your Azure Pass provides a $100 USD credit for you to use with Azure, enabling you to create various resources as part
-of this workshop. Follow these steps to redeem your pass:  
+of this workshop. Follow these steps to redeem your pass:
 
-
-1. Open a new private browser window. This ensures you don't accidentally link the Azure pass to an existing Microsoft Account or work account. Navigate to the [Microsoft Azure Pass](https://www.microsoftazurepass.com/) website and click the "Start" button.
+1. Open a new private browser window. This ensures you don't accidentally link the Azure pass to an existing Microsoft
+   Account or work account. Navigate to the [Microsoft Azure Pass](https://www.microsoftazurepass.com/) website and
+   click the "Start" button.
 
    ![Azure Pass](images/image01.png "Azure Pass")
 
@@ -70,17 +71,28 @@ az provider register --namespace Microsoft.ServiceLinker
 
 ## Prepare Your Azure Environment
 
-This workshop provides Bicep templates to deploy the necessary resources to Azure. In case you're using your own laptop, please git clone the project first. If you're using GitHub Codespaces, the project is already cloned for you so you don't need to do anything. 
+This workshop provides Bicep templates to deploy the necessary resources to Azure. In case you're using your own laptop,
+please git clone the project first. If you're using GitHub Codespaces, the project is already cloned for you so you
+don't need to do anything.
 
 ```bash
 git clone https://github.com/eggboy/aca-java-ai-workshop
 cd aca-java-ai-workshop
 ```
 
-Run the following command to deploy the necessary resources to Azure. This is an example of outputs:
+Run the command `azd up` in the $HOME directory to deploy the necessary resources to Azure. This will create resources in your Azure subscription, including:
+
+1. Resource Group
+2. Log Analytics workspace
+3. Azure Service Bus Namespace and Queue `keda`
+4. Azure OpenAI Endpoint
+5. Azure Container Apps Environment
+6. Azure Database for MySQL Flexible Server
+
+This is an example of outputs:
 
 ```bash
-azd up
+$ azd up
 ? Select an Azure location to use:  1. (Asia Pacific) East Asia (eastasia)
 
 Packaging services (azd package)
@@ -109,14 +121,8 @@ Deploying services (azd deploy)
 SUCCESS: Your up workflow to provision and deploy to Azure completed in 8 minutes 3 seconds.
 ```
 
-This will create resources in your Azure subscription, including:
-1. Resource Group
-2. Log Analytics workspace
-3. Azure OpenAI Endpoint
-4. Azure Container Apps Environment
-5. Azure Database for MySQL Flexible Server
-
-`azd up` will return the name of resources created in your Azure subscription. Please go to [Azure Portal](https://portal.azure.com) to verify the resources in the resource gorup `aca-labs`
+`azd up` will return the name of resources created in your Azure subscription. Please go
+to [Azure Portal](https://portal.azure.com) to verify the resources in the resource gorup `aca-labs`
 
 ## Configure default settings for Azure Container Apps
 
@@ -128,4 +134,5 @@ This will create resources in your Azure subscription, including:
 ---
 
 ➡️
-Up Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
+Up
+Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)
