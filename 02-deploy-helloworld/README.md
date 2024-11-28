@@ -21,10 +21,10 @@ at  [https://start.spring.io/](https://start.spring.io/).
 ```bash
 mkdir helloworld
 cd helloworld
-curl https://start.spring.io/starter.tgz -d dependencies=web,actuator,azure-support -d bootVersion=3.2.11 -d name=helloworld -d type=maven-project | tar -xzvf -
+curl https://start.spring.io/starter.tgz -d dependencies=web,actuator,azure-support -d bootVersion=3.3.6 -d name=helloworld -d type=maven-project | tar -xzvf -
 ```
 
-> In the lab, we fix the Spring Boot version to be 3.2.11, and keep the default settings using the `com.example.demo`
+> In the lab, we fix the Spring Boot version to be  and keep the default settings using the `com.example.demo`
 > package
 
 In the `src/main/java/com/example/demo` directory, create a

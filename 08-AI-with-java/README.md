@@ -1,4 +1,4 @@
-# Create AI-infused Java Apps with Azure OpenAI and Spring AI
+# :rocket: Create AI-infused Java Apps with Azure OpenAI and Spring AI
 
 In this chapter, we will explore how to create AI-infused Java applications using Azure OpenAI and Spring AI. We will start by configuring our Spring Boot application to connect with Azure OpenAI. Next, we'll implement a simple chatbot using Azure OpenAI's GPT-4o model to demonstrate seamless AI integration into Java applications. Additionally, we will cover function calling with Spring AI, allowing our application to perform complex tasks by leveraging AI models.
 

@@ -118,4 +118,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-.azure
+.mvn/
+.azure/

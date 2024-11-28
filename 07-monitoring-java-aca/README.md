@@ -1,4 +1,4 @@
-# Monitoring Java Applications on Azure Container Apps
+# :rocket: Monitoring Java Applications on Azure Container Apps
 
 Monitoring is a critical part of running applications in production. Azure Container Apps provides several monitoring options to help you monitor your Java applications.
 
