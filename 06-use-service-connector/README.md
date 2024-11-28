@@ -146,6 +146,5 @@ az containerapp update --name vets-service --set-env-vars SPRING_PROFILES_ACTIVE
 
 ---
 
-➡️
-:arrow_forward::️ Up
+:arrow_forward:  Up
 Next : [07 - Monitoring Java Applications on Azure Container Apps](../07-monitoring-java-aca/README.md)

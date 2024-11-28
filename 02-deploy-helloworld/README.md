@@ -272,5 +272,5 @@ Congratulations, you have deployed your first Spring Boot app to Azure Container
 
 ---
 
-➡️
+:arrow_forward:
 Up Next : [03 - Autoscaling with KEDA(Kubernetes-based Event Driven Autoscaler)](../03-use-keda-autoscaling/README.md)

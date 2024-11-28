@@ -118,7 +118,7 @@ Location: East Asia
 Deploying services (azd deploy)
 
 
-SUCCESS: Your up workflow to provision and deploy to Azure completed in 8 minutes 3 seconds.
+SUCCESS: Your up workflow to pro vision and deploy to Azure completed in 8 minutes 3 seconds.
 ```
 
 `azd up` will return the name of resources created in your Azure subscription. Please go
@@ -129,10 +129,12 @@ to [Azure Portal](https://portal.azure.com) to verify the resources in the resou
 > [!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
 > ```bash
 > az configure --defaults location=koreacentral group=aca-labs
+> export ACA_ENVIRONMENT_NAME=
+> 
 > ```
 
 ---
 
-➡️
+:arrow_forward:
 Up
 Next : [02 - Create a Hello World Spring Boot App and Deploy to Azure Container Apps](../02-deploy-helloworld/README.md)

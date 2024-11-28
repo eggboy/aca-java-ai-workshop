@@ -108,6 +108,6 @@ In this chapter, we enabled Java metrics for the backend services, accessed the 
 
 ---
 
-:arrow_forward::️ Up
+:arrow_forward: Up
 Next  : [08 - Create AI-infused Java Apps with Azure OpenAI and Spring AI](../08-AI-with-java/README.md)
 

@@ -144,4 +144,4 @@ MySQL flexible server.
 
 ---
 
-:arrow_forward::️ Up Next : [06 - Use Azure Service Connector](../06-use-service-connector/README.md)
+:arrow_forward: Up Next : [06 - Use Azure Service Connector](../06-use-service-connector/README.md)

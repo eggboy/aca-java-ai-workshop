@@ -82,4 +82,4 @@ In this module, we created a managed Eureka Server, Config Server, and Spring Bo
 
 ---
 
-:arrow_forward::️ Up Next : [05 - Deploy PetClinic Microservices](../05-deploy-microservices/README.md)
+:arrow_forward: Up Next : [05 - Deploy PetClinic Microservices](../05-deploy-microservices/README.md)
