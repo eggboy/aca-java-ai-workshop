@@ -68,7 +68,12 @@ The above step verifies that the hello-world app is running locally without issu
 Use the command below to create the app instance from CLI:
 
 ```bash
-az containerapp create --name helloworld --environment ${ACA_ENVIRONMENT_NAME} --source . --ingress external --target-port 8080 --query properties.configuration.ingress.fqdn
+az containerapp create --name helloworld \
+  --environment ${ACA_ENVIRONMENT_NAME} \
+  --source . \
+  --ingress external \
+  --target-port 8080 \
+  --query properties.configuration.ingress.fqdn
 ```
 
 This command deploys your Spring Boot project to Azure Container Apps. Internally, Azure Container Apps uses the Oryx

@@ -82,7 +82,7 @@ cd aca-java-ai-workshop
 
 Run the command `azd up` in the $HOME directory to deploy the necessary resources to Azure. This will create resources in your Azure subscription, including:
 
-1. Resource Group
+1. Resource Group `aca-labs`
 2. Log Analytics workspace
 3. Azure Service Bus Namespace and Queue `keda`
 4. Azure OpenAI Endpoint
@@ -129,8 +129,10 @@ to [Azure Portal](https://portal.azure.com) to verify the resources in the resou
 > [!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
 > ```bash
 > az configure --defaults location=koreacentral group=aca-labs
+> ```
+> Also, export the name of Azure Container Apps Environment which is created by `azd up` command:
+> ```bash
 > export ACA_ENVIRONMENT_NAME=
-> 
 > ```
 
 ---
