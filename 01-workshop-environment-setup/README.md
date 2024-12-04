@@ -31,14 +31,15 @@ To prepare your code environment for the workshop, you need to install the follo
 
 1. [JDK 17](https://docs.microsoft.com/java/openjdk/download?WT.mc_id=azurespringcloud-github-judubois#openjdk-17)
 2. VSCode, or IntelliJ for GitHub Copilot
-3. [Azure CLI version 2.64.0 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+3. GitHub Copilot extension for VSCode or IntelliJ. Codespaces already has GitHub Copilot extension installed.
+   4[Azure CLI version 2.64.0 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
    You can check the version of your current Azure CLI installation by running:
 
     ```bash
     az --version
     ```
 
-4. [Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-windows)
+5. [Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-windows)
 
 ## Log In with Azure CLI
 
@@ -80,7 +81,8 @@ git clone https://github.com/eggboy/aca-java-ai-workshop
 cd aca-java-ai-workshop
 ```
 
-Run the command `azd up` in the $HOME directory to deploy the necessary resources to Azure. This will create resources in your Azure subscription, including:
+Run the command `azd up` in the $HOME directory to deploy the necessary resources to Azure. This will create resources
+in your Azure subscription, including:
 
 1. Resource Group `aca-labs`
 2. Log Analytics workspace
@@ -126,14 +128,17 @@ to [Azure Portal](https://portal.azure.com) to verify the resources in the resou
 
 ## Configure default settings for Azure Container Apps
 
-> [!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
-> ```bash
-> az configure --defaults location=koreacentral group=aca-labs
-> ```
-> Also, export the name of Azure Container Apps Environment which is created by `azd up` command:
-> ```bash
-> export ACA_ENVIRONMENT_NAME=
-> ```
+[!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
+
+ ```bash
+ az configure --defaults location={Location(eastasia or koreacentral) you selected during `azd up`} group=aca-labs
+ ```
+
+Also, export the name of Azure Container Apps Environment which is created by `azd up` command:
+
+ ```bash
+ export ACA_ENVIRONMENT_NAME={Azure Container Apps Environment created by `azd up` command. It's `cae-vyhjztie4zgue` in the example above}
+ ```
 
 ---
 
