@@ -26,8 +26,6 @@ This workshop is intended to provide a hands-on experience on running Java on Az
 ![Spring PetClinic Microservices](08-AI-with-java/images/chat-2.png)
 ![Spring PetClinic Microservices](08-AI-with-java/images/chat-3.png)
 
----
-
 # Agenda
 
 1. [Prepare Your Azure Environment](01-workshop-environment-setup/README.md)
