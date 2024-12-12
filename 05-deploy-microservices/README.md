@@ -21,8 +21,6 @@ In this module, we'll focus on two key objectives:
 1. :white_check_mark: Deploy the Spring PetClinic backend services to Azure Container Apps.
 2. :bar_chart: Bind all the services to Eureka Server and Config Server.
 
----
-
 ## Deploying Backend Services
 
 As our first step, we're going to deploy 3 microservices on Azure Container Apps, `customers-service`, `visits-service`,

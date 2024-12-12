@@ -25,7 +25,8 @@ of [scaling triggers](https://learn.microsoft.com/en-us/azure/container-apps/sca
 
 Custom scaling trigger uses KEDA under the hood which we'll discuss more in following chapters.
 
-> :warning: **Please note, adding or altering scaling rules creates a new revision of your container app.**
+> [!WARNING]
+> :warning: **Adding or altering scaling rules creates a new revision of your container app.**
 
 ## HTTP Scaling Rule
 

@@ -133,18 +133,17 @@ Finally, specify the SPRING_ACTIVE_PROFILE to `passwordless` in the vets-service
 az containerapp update --name vets-service --set-env-vars SPRING_PROFILES_ACTIVE=passwordless
 ```
 
-> 💡 [!NOTE]
-> `passwordless` profile will automatically create tables on MySQL. Use client tools like MySQL Workbench to see the
+> [!NOTE]
+> :bulb: `passwordless` profile will automatically create tables on MySQL. Use client tools like MySQL Workbench to see the
 > tables.
 
 > [!IMPORTANT]
 > **Repeat the same steps for customers-service and visits-service**
 
 
-
 ## :notebook_with_decorative_cover: Summary
 
----
+In this module, we learned the basics of application authentication for Azure resources with Azure SDK. Also, we learned the benefits of Managed Identity over Service Principal. We configured the backend services to use managed identity to connect to MySQL database. Finally, we understood the concept of passwordless connection with Service Connector. Up next, we will monitor the Java applications on Azure Container Apps.
 
 :arrow_forward:  Up
 Next : [07 - Monitoring Java Applications on Azure Container Apps](../07-monitoring-java-aca/README.md)
