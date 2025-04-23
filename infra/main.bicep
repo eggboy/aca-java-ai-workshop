@@ -15,8 +15,6 @@ param environmentName string
 })
 param location string
 
-param resourceGroupName string = '' // Set in main.parameters.json
-
 @secure()
 param openAiServiceName string = ''
 
@@ -39,7 +37,7 @@ param openAiResourceGroupLocation string
 
 param azureOpenAiSkuName string = '' // Set in main.parameters.json
 
-param logAnalyticsName string = '' // Set in main.parameters.json
+//param logAnalyticsName string = '' // Set in main.parameters.json
 
 param azureOpenAiDeploymentName string = '' // Set in main.parameters.json
 param azureOpenAiDeploymentSkuName string = '' // Set in main.parameters.json
@@ -70,7 +68,7 @@ var tags = { 'azd-env-name': environmentName }
 
 // Organize resources in a resource group
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'aca-labs'
+  name: 'aca-labs-${resourceToken}'
   location: location
   tags: tags
 }
@@ -117,28 +115,64 @@ module openAi 'br/public:avm/res/cognitive-services/account:0.7.2' = {
 }
 
 
-module workspace 'br/public:avm/res/operational-insights/workspace:0.7.0' = {
-  name: 'loganalytics'
+// module workspace 'br/public:avm/res/operational-insights/workspace:0.7.0' = {
+//   name: 'loganalytics'
+//   scope: resourceGroup
+//   params: {
+//     name: !empty(logAnalyticsName) ? logAnalyticsName : '${abbrs.logAnayticsWorkspace}${resourceToken}'
+//     location: location
+//     tags: tags
+//     publicNetworkAccessForIngestion: publicNetworkAccess
+//   }
+// }
+
+module workspace 'logAnalytics.bicep' = {
+  name: 'logAnalyticsDeployment'
   scope: resourceGroup
   params: {
-    name: !empty(logAnalyticsName) ? logAnalyticsName : '${abbrs.logAnayticsWorkspace}${resourceToken}'
-    location: location
-    tags: tags
-    publicNetworkAccessForIngestion: publicNetworkAccess
-  }
+      location: location
+    }
 }
 
+// module acr 'acr.bicep' = {
+//   name: 'containerRegistryDeployment'
+//   scope: resourceGroup
+//   params: {
+//       resourceToken: resourceToken
+//       location: location
+//     }
+// }
 
-module managedEnvironment 'br/public:avm/res/app/managed-environment:0.8.1' = {
-  name: 'managedEnvironmentDeployment'
-  scope: resourceGroup
-  params: {
-    // Required parameters
-    logAnalyticsWorkspaceResourceId: workspace.outputs.resourceId
-    name: '${abbrs.contaienrAppsEnvironments}${resourceToken}'
-    zoneRedundant: false
-  }
-}
+// module managedEnvironment 'br/public:avm/res/app/managed-environment:0.11.0' = {
+//   name: 'managedEnvironmentDeployment'
+//   scope: resourceGroup
+//   params: {
+//     name: '${abbrs.contaienrAppsEnvironments}${resourceToken}'
+//     appLogsConfiguration: {
+//       destination: 'log-analytics'
+//       logAnalyticsConfiguration: {
+//         customerId: workspace.outputs.properties.customerId
+//         sharedKey: workspace.outputs.primarySharedKey
+//       }
+//     }
+//     managedIdentities: {
+//       systemAssigned: true
+//       userAssignedResourceIds: [
+//         acr.outputs.acrIdentityResourceId
+//       ]
+//     }
+//
+//     zoneRedundant: false
+//     workloadProfiles: [
+//         {
+//             maximumCount: 3
+//             minimumCount: 0
+//             name: 'CAW01'
+//             workloadProfileType: 'D4'
+//           }
+//       ]
+//   }
+// }
 
 module flexibleServer 'br/public:avm/res/db-for-my-sql/flexible-server:0.4.1' = {
   name: 'flexibleServerDeployment'
@@ -162,6 +196,7 @@ module namespace 'br/public:avm/res/service-bus/namespace:0.10.1' = {
     name: '${abbrs.serviceBusNamespaces}${resourceToken}'
     // Non-required parameters
     location: location
+    disableLocalAuth: false
     skuObject: {
       capacity: 2
       name: 'Standard'
@@ -189,4 +224,4 @@ output AZURE_OPENAI_DEPLOYMENT_NAME string = gpt4o.deploymentName
 output AZURE_OPENAI_ENDPOINT string = openAi.outputs.endpoint
 output AZURE_OPENAI_API_KEY object = openAi.outputs.exportedSecrets
 
-output AZURE_CONTAINER_APPS_MANAGED_ENVIRONMENT string = managedEnvironment.outputs.name
+//output AZURE_CONTAINER_APPS_MANAGED_ENVIRONMENT string = managedEnvironment.outputs.name

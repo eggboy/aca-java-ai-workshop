@@ -30,9 +30,9 @@ Upon successful redemption, you'll have a newly setup Azure subscription.
 To prepare your code environment for the workshop, you need to install the following tools:
 
 1. [JDK 17](https://docs.microsoft.com/java/openjdk/download?WT.mc_id=azurespringcloud-github-judubois#openjdk-17)
-2. VSCode, or IntelliJ for GitHub Copilot
-3. GitHub Copilot extension for VSCode or IntelliJ. Codespaces already has GitHub Copilot extension installed.
-   4[Azure CLI version 2.64.0 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+2. VSCode, or IntelliJ
+3. GitHub Copilot extension for VSCode or IntelliJ. Codespaces already has GitHub Copilot extension installed. 
+4. [Azure CLI version 2.64.0 or higher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
    You can check the version of your current Azure CLI installation by running:
 
     ```bash
@@ -109,7 +109,7 @@ Location: East Asia
   You can view detailed progress in the Azure Portal:
   https://portal.azure.com/#view/...
 
-  (✓) Done: Resource group: aca-labs (7.168s)
+  (✓) Done: Resource group: aca-labs-vyhjztie4zgue (7.168s)
   (✓) Done: Log Analytics workspace: log-vyhjztie4zgue (4.19s)
   (✓) Done: Service Bus Namespace: sb-vyhjztie4zgue (22.363s)
   (✓) Done: Azure OpenAI: cog-vyhjztie4zgue (29.06s)
@@ -131,7 +131,7 @@ to [Azure Portal](https://portal.azure.com) to verify the resources in the resou
 [!IMPORTANT] To ensure easy access to Azure Container Apps, set your default settings:
 
  ```bash
- az configure --defaults location={Location(eastasia or koreacentral) you selected during `azd up`} group=aca-labs
+ az configure --defaults location={Location(eastasia or koreacentral) you selected during `azd up`} group={Resource group name created by `azd up` command. It's `aca-labs-vyhjztie4zgue` in the example above}
  ```
 
 Also, export the name of Azure Container Apps Environment which is created by `azd up` command:
