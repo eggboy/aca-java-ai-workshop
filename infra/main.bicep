@@ -48,7 +48,7 @@ var gpt4o = {
   deploymentName: !empty(azureOpenAiDeploymentName) ? azureOpenAiDeploymentName : 'gpt-4o'
   deploymentVersion: !empty(azureOpenAiDeploymentVersion) ? azureOpenAiDeploymentVersion : '2024-08-06'
   deploymentSkuName: !empty(azureOpenAiDeploymentSkuName) ? azureOpenAiDeploymentSkuName : 'Standard'
-  deploymentCapacity: azureOpenAiDeploymentCapacity != 0 ? azureOpenAiDeploymentCapacity : 30
+  deploymentCapacity: azureOpenAiDeploymentCapacity != 0 ? azureOpenAiDeploymentCapacity : 1
 }
 
 

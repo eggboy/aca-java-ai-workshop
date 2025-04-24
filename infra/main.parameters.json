@@ -24,7 +24,7 @@
       "value": "Standard"
     },
     "azureOpenAiDeploymentCapacity": {
-      "value": "30"
+      "value": "1"
     },
     "azureOpenAiDeploymentVersion": {
       "value": "${AZURE_OPENAI_DEPLOYMENT_VERSION=2024-08-06}"
